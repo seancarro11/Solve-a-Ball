@@ -10,6 +10,7 @@ public class GridMid : MonoBehaviour
     public string[,] objList2;
     private string defults = "Air";
     public GameObject cushion, plank;
+    private GridFloor gFloor;
     private void Awake()
     {
         objList2 = new string[rows, columns];
@@ -25,7 +26,7 @@ public class GridMid : MonoBehaviour
     }
     void Start()
     {
-
+        gFloor=transform.GetComponent<GridFloor>();
     }
 
     // Update is called once per frame
@@ -76,7 +77,7 @@ public class GridMid : MonoBehaviour
         GameObject temp;
         //Debug.Log(""+i+j);
         // Debug.Log(objList[i, j]);
-        Physics.Raycast(new Vector3(i * 2, 0.0f, j * 2), Vector3.up, out hitInfo, 0.5f);
+        Physics.Raycast(new Vector3(i * 2, 1.0f, j * 2), Vector3.up, out hitInfo, 0.5f);
         temp = hitInfo.transform.gameObject;
         return temp;
     }
@@ -99,7 +100,25 @@ public class GridMid : MonoBehaviour
     }
     public void addCushion(int i, int j)
     {
+        GameObject temp;
+        GameObject tTemp;
         objList2[i, j] = "Cusion";
         Instantiate(cushion, new Vector3(i * 2, 2, j * 2), Quaternion.identity);//have to edit the y 
+        temp=getObject(i, j);
+        tTemp=gFloor.getObject(i, j);
+        temp.transform.parent = tTemp.transform;
+    }
+    public void updateGridCushionMove(int i, int j, Vector3 dirction)
+    {
+        objList2[i, j] = "Air";
+        if (dirction.x != 0.0f)
+        {
+            i = i + (int)dirction.x;
+        }
+        if (dirction.z != 0.0f)
+        {
+            j = j + (int)dirction.z;
+        }
+        objList2[i, j] = "Cusion";
     }
 }

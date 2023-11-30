@@ -164,7 +164,20 @@ public class PlayerController : MonoBehaviour
                         switch (nextTag)//check tag of next area
                         {
                             case "Air": break;
-                            case "Table": break;
+                            case "Table":
+                                nextTag=gMid.getLocation(((int)transform.position.x / 2) + (int)faceDirection.x, ((int)transform.position.z / 2));
+                                if (nextTag == "Cusion")
+                                {
+                                    gMid.RemoveCushion(((int)transform.position.x / 2) + (int)faceDirection.x, ((int)transform.position.z / 2));
+                                    cushion =gMid.getObject(((int)transform.position.x / 2) + (int)faceDirection.x, ((int)transform.position.z / 2));
+                                    Destroy(cushion);
+                                    hasCusion = true;
+                                    gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
+                                    StartCoroutine(Delay());
+                                    break;
+                                }
+                                break;
+
                             case "Cusion":
                                 gFloor.RemoveCushion(((int)transform.position.x / 2)+(int)faceDirection.x, ((int)transform.position.z / 2));
                                 Destroy(gFloor.getObject(((int)transform.position.x / 2)+(int)faceDirection.x, ((int)transform.position.z / 2)));
@@ -184,7 +197,19 @@ public class PlayerController : MonoBehaviour
                         switch (nextTag)//check tag of next area
                         {
                             case "Air": break;
-                            case "Table": break;
+                            case "Table":
+                                nextTag = gMid.getLocation(((int)transform.position.x / 2), ((int)transform.position.z / 2) + (int)faceDirection.z);
+                                if (nextTag == "Cusion")
+                                {
+                                    gMid.RemoveCushion(((int)transform.position.x / 2), ((int)transform.position.z / 2) + (int)faceDirection.z);
+                                    cushion = gMid.getObject(((int)transform.position.x / 2), ((int)transform.position.z / 2) + (int)faceDirection.z);
+                                    Destroy(cushion);
+                                    hasCusion = true;
+                                    gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
+                                    StartCoroutine(Delay());
+                                    break;
+                                }
+                                break;
                             case "Cusion":
                                 gFloor.RemoveCushion(((int)transform.position.x / 2), ((int)transform.position.z / 2) + (int)faceDirection.z);
                                 Destroy(gFloor.getObject(((int)transform.position.x / 2), ((int)transform.position.z / 2) + (int)faceDirection.z));
@@ -286,17 +311,37 @@ public class PlayerController : MonoBehaviour
         origPos = lookingAt.transform.position;
         targetPos = origPos + direction * dist;
         nextTag = gFloor.getLocation(((int)targetPos.x / 2), ((int)targetPos.z / 2));
-        if (nextTag != null)
+        if (nextTag == "Air")
         {
-            while (eTime < timeToMove)
+            if (lookingAt.transform.GetChild(0).gameObject.activeSelf)
             {
-                lookingAt.transform.position = Vector3.Lerp(origPos, targetPos, (eTime / timeToMove));
-                eTime += Time.deltaTime;
-                yield return null;
+                nextTag = gMid.getLocation(((int)targetPos.x / 2), ((int)targetPos.z / 2));
+                if (nextTag == "Air")
+                {
+                    while (eTime < timeToMove)
+                    {
+                        lookingAt.transform.position = Vector3.Lerp(origPos, targetPos, (eTime / timeToMove));
+                        eTime += Time.deltaTime;
+                        yield return null;
+                    }
+                    lookingAt.transform.position = targetPos;
+                    Moving = false;
+                    gFloor.updateGridTableMove(((int)origPos.x / 2), ((int)origPos.z / 2), direction);
+                    gMid.updateGridCushionMove(((int)origPos.x / 2), ((int)origPos.z / 2), direction);
+                }
             }
-            lookingAt.transform.position = targetPos;
-            Moving = false;
-            gFloor.updateGridTableMove(((int)origPos.x / 2), ((int)origPos.z / 2),direction);
+            else
+            {
+                while (eTime < timeToMove)
+                {
+                    lookingAt.transform.position = Vector3.Lerp(origPos, targetPos, (eTime / timeToMove));
+                    eTime += Time.deltaTime;
+                    yield return null;
+                }
+                lookingAt.transform.position = targetPos;
+                Moving = false;
+                gFloor.updateGridTableMove(((int)origPos.x / 2), ((int)origPos.z / 2), direction);
+            }
         }
     }
     private IEnumerator Delay()
