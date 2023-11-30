@@ -313,7 +313,7 @@ public class PlayerController : MonoBehaviour
         nextTag = gFloor.getLocation(((int)targetPos.x / 2), ((int)targetPos.z / 2));
         if (nextTag == "Air")
         {
-            if (lookingAt.transform.GetChild(0).gameObject.activeSelf)
+            if (lookingAt.transform.childCount > 0)
             {
                 nextTag = gMid.getLocation(((int)targetPos.x / 2), ((int)targetPos.z / 2));
                 if (nextTag == "Air")
