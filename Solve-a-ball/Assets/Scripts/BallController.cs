@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class BallController : MonoBehaviour
@@ -16,6 +17,8 @@ public class BallController : MonoBehaviour
     private GridMid gMid;
     private GridTop gTop;
     private string belowTag, forwardTag;
+    public AudioClip ballMove,unlock;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,7 @@ public class BallController : MonoBehaviour
         gFloor = GameObject.Find("GM").GetComponent<GridFloor>();
         gMid = GameObject.Find("GM").GetComponent<GridMid>();
         gTop = GameObject.Find("GM").GetComponent<GridTop>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,14 +65,7 @@ public class BallController : MonoBehaviour
                     break;
                 case "Cusion": curDrection = Vector3.down; StartCoroutine(MoveBall(curDrection)); ballHeight = ballHeight - 1; break;//falls to cushion
                 case "Plank":
-                    if (isFalling == true)
-                    {
-                        Debug.Log("Shatter");
-                    }
-                    else
-                    {
-                        checkAhead(); break;
-                    }
+                    Debug.Log("Shatter");
                     break;
             }
         }
@@ -111,7 +108,13 @@ public class BallController : MonoBehaviour
                 }
             case "Table": Debug.Log("Shatter"); break;
             case "Cusion": break;
-            case "Plank": Debug.Log("Shatter"); break;
+            case "Plank":
+                if (!Moving)
+                {
+                    StartCoroutine(MoveBall(curHDrection));
+                    Invoke("updateDir", timeToMove);
+                }
+                break;
             case "Door": StartCoroutine(MoveBall(curHDrection)); Debug.Log("Unlocked Door"); break;
         }
     }
@@ -121,6 +124,7 @@ public class BallController : MonoBehaviour
 
         float eTime = 0;
         origPos = transform.position;
+        audioSource.PlayOneShot(ballMove);
         if (direction == Vector3.down)
         {
             targetPos = origPos + direction;
@@ -146,6 +150,26 @@ public class BallController : MonoBehaviour
             transform.position = targetPos;
             Moving = false;
         }
+    }
+    private void updateDir()
+    {
+        switch (ballHeight)
+        {
+            case 1: curHDrection = (gFloor.getObject(((int)transform.position.x / 2) + ((int)curHDrection.x), ((int)transform.position.z / 2) + ((int)curHDrection.z))).GetComponent<PlankController>().getCurDirection(); break;
+            case 2: curHDrection = (gMid.getObject(((int)transform.position.x / 2) + ((int)curHDrection.x), ((int)transform.position.z / 2) + ((int)curHDrection.z))).GetComponent<PlankController>().getCurDirection(); break;
+                //case 3:curHDrection = (g.getObject(((int)transform.position.x / 2) + ((int)curHDrection.x), ((int)transform.position.z / 2) + ((int)curHDrection.z))).GetComponent<PlankController>().getCurDirection(); break;
+        }
+    }
+    void UnlockDoor()
+    {
+        audioSource.PlayOneShot(ballMove);
+        //animation
+        Invoke("NextLevel", 5.0f);
+    }
+    void nextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
     void shatter()
     {

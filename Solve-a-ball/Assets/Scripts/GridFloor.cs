@@ -101,9 +101,18 @@ public class GridFloor : MonoBehaviour
     {
         objList[i, j] = "Air";
     }
+    public void RemovePlank(int i, int j)
+    {
+        objList[i, j] = "Air";
+    }
     public void addCushion(int i, int j)
     {
         objList[i, j] = "Cusion";
         Instantiate(cushion, new Vector3(i*2, 1, j*2), Quaternion.identity);//have to edit the y 
+    }
+    public void addPlank(int i, int j)
+    {
+        objList[i, j] = "Plank";
+        Instantiate(plank, new Vector3(i * 2, 1, j * 2), Quaternion.identity);//have to edit the y 
     }
 }

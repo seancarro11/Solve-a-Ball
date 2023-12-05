@@ -49,7 +49,7 @@ MonoBehaviour:
   rows: 6
   columns: 6
   cushion: {fileID: 149948982166731059, guid: f050f1b4c9be07f479b1fe9048ec47bd, type: 3}
-  plank: {fileID: 0}
+  plank: {fileID: 3761647863972071877, guid: 3bb61c19c3e46004eac99d9422e5e101, type: 3}
 --- !u!114 &6286402318832681694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   rows: 6
   columns: 6
   cushion: {fileID: 149948982166731059, guid: f050f1b4c9be07f479b1fe9048ec47bd, type: 3}
-  plank: {fileID: 0}
+  plank: {fileID: 3761647863972071877, guid: 3bb61c19c3e46004eac99d9422e5e101, type: 3}
 --- !u!114 &2565756082496144456
 MonoBehaviour:
   m_ObjectHideFlags: 0

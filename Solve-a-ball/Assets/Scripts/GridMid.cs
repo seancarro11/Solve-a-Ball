@@ -98,6 +98,10 @@ public class GridMid : MonoBehaviour
     {
         objList2[i, j] = "Air";
     }
+    public void RemovePlank(int i, int j)
+    {
+        objList2[i, j] = "Air";
+    }
     public void addCushion(int i, int j)
     {
         GameObject temp;
@@ -106,6 +110,16 @@ public class GridMid : MonoBehaviour
         Instantiate(cushion, new Vector3(i * 2, 2, j * 2), Quaternion.identity);//have to edit the y 
         temp=getObject(i, j);
         tTemp=gFloor.getObject(i, j);
+        temp.transform.parent = tTemp.transform;
+    }
+    public void addPlank(int i, int j)
+    {
+        GameObject temp;
+        GameObject tTemp;
+        objList2[i, j] = "Plank";
+        Instantiate(plank, new Vector3(i * 2, 2, j * 2), Quaternion.identity);//have to edit the y 
+        temp = getObject(i, j);
+        tTemp = gFloor.getObject(i, j);
         temp.transform.parent = tTemp.transform;
     }
     public void updateGridCushionMove(int i, int j, Vector3 dirction)
@@ -120,5 +134,18 @@ public class GridMid : MonoBehaviour
             j = j + (int)dirction.z;
         }
         objList2[i, j] = "Cusion";
+    }
+    public void updateGridPlankMove(int i, int j, Vector3 dirction)
+    {
+        objList2[i, j] = "Air";
+        if (dirction.x != 0.0f)
+        {
+            i = i + (int)dirction.x;
+        }
+        if (dirction.z != 0.0f)
+        {
+            j = j + (int)dirction.z;
+        }
+        objList2[i, j] = "Plank";
     }
 }
