@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
                             break;
                         case "Cusion": break;
                         case "Plank": break;
+                        case "Wall": break;
+                        case "Door": break;
+
                     }
 
                 }
@@ -83,6 +86,8 @@ public class PlayerController : MonoBehaviour
                             break;
                         case "Cusion": break;
                         case "Plank": break;
+                        case "Wall": break;
+                        case "Door": break;
                     }
                 }
             }
@@ -115,6 +120,8 @@ public class PlayerController : MonoBehaviour
                             break;
                         case "Cusion": break;
                         case "Plank": break;
+                        case "Wall": break;
+                        case "Door": break;
                     }
                 }
             }
@@ -147,6 +154,8 @@ public class PlayerController : MonoBehaviour
                             break;
                         case "Cusion": break;
                         case "Plank": break;
+                        case "Wall": break;
+                        case "Door": break;
                     }
                 }
             }

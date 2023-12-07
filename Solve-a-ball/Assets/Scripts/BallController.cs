@@ -63,6 +63,16 @@ public class BallController : MonoBehaviour
                         checkAhead(); break;
                     }
                     break;
+                case "Wall":
+                    if (isFalling == true)
+                    {
+                        Debug.Log("Shatter");
+                    }
+                    else
+                    {
+                        checkAhead(); break;
+                    }
+                    break;
                 case "Cusion": curDrection = Vector3.down; StartCoroutine(MoveBall(curDrection)); ballHeight = ballHeight - 1; break;//falls to cushion
                 case "Plank":
                     Debug.Log("Shatter");
@@ -107,6 +117,7 @@ public class BallController : MonoBehaviour
                     break; 
                 }
             case "Table": Debug.Log("Shatter"); break;
+            case "Wall": Debug.Log("Shatter"); break;
             case "Cusion": break;
             case "Plank":
                 if (!Moving)

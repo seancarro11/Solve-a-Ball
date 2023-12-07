@@ -8,6 +8,7 @@ TagManager:
   - Plank
   - Cusion
   - Door
+  - Wall
   layers:
   - Default
   - TransparentFX

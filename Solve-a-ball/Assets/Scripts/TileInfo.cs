@@ -63,6 +63,17 @@ public class TileInfo : MonoBehaviour
                     case 2: gameM.GetComponent<GridTop>().addData(transform.position, "Door"); break;
                 }
             }
+            else if (Physics.Raycast(new Vector3(transform.position.x, point.y, transform.position.z), Vector3.up, out hitInfo, 0.5f) && hitInfo.collider.CompareTag("Wall"))
+            {
+                // Do something when a trigger collider with the specified tag is detected at the specified point
+                Debug.Log($"Trigger collider with tag 'Door' detected at point {point}!");
+                switch (index)
+                {
+                    case 0: gameM.GetComponent<GridFloor>().addData(transform.position, "Wall"); break;
+                    case 1: gameM.GetComponent<GridMid>().addData(transform.position, "Wall"); break;
+                    case 2: gameM.GetComponent<GridTop>().addData(transform.position, "Wall"); break;
+                }
+            }
             else
             {
             }
