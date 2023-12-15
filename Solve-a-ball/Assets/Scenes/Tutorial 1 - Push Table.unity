@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3956822, g: 0.1498914, b: 0.18825415, a: 1}
+  m_IndirectSpecularColor: {r: 0.39568225, g: 0.14989173, b: 0.18825442, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1355,6 +1355,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4124505106040062170, guid: 83fb4674a8d852a4597fc05d8e04a8d1, type: 3}
+      propertyPath: unlock
+      value: 
+      objectReference: {fileID: 8300000, guid: c48a77f8d2b5edc4db71a29a1c114060, type: 3}
+    - target: {fileID: 4124505106040062170, guid: 83fb4674a8d852a4597fc05d8e04a8d1, type: 3}
+      propertyPath: ballMove
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f97ae0f54c9e8b4887c8f51a0730b20, type: 3}
     - target: {fileID: 5057419467300977768, guid: 83fb4674a8d852a4597fc05d8e04a8d1, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -1685,6 +1693,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1151958222235188964, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6212134722872932535, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1700,15 +1712,15 @@ PrefabInstance:
     - target: {fileID: 7662574718355292838, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: walk
       value: 
-      objectReference: {fileID: 8300000, guid: acecc2c28a843434bbe473e6d9ddc4bb, type: 3}
+      objectReference: {fileID: 8300000, guid: c8a8088930f6cd14e96a77dec1b24bb4, type: 3}
     - target: {fileID: 7662574718355292838, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: TableMove
       value: 
-      objectReference: {fileID: 8300000, guid: acecc2c28a843434bbe473e6d9ddc4bb, type: 3}
+      objectReference: {fileID: 8300000, guid: dae9ca731f67cce4b97ecc9a239f2e3e, type: 3}
     - target: {fileID: 7662574718355292838, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: TurnPlank
       value: 
-      objectReference: {fileID: 8300000, guid: acecc2c28a843434bbe473e6d9ddc4bb, type: 3}
+      objectReference: {fileID: 8300000, guid: 82414f7518ab6ca408a647bec1d88aa4, type: 3}
     - target: {fileID: 7662574718355292838, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: soundLevel
       value: 0.05
@@ -1716,11 +1728,11 @@ PrefabInstance:
     - target: {fileID: 7662574718355292838, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: PickupPlank
       value: 
-      objectReference: {fileID: 8300000, guid: acecc2c28a843434bbe473e6d9ddc4bb, type: 3}
+      objectReference: {fileID: 8300000, guid: 57b85e77c8bed7a409b771705872ccdb, type: 3}
     - target: {fileID: 7662574718355292838, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: PickupCushion
       value: 
-      objectReference: {fileID: 8300000, guid: acecc2c28a843434bbe473e6d9ddc4bb, type: 3}
+      objectReference: {fileID: 8300000, guid: 57b85e77c8bed7a409b771705872ccdb, type: 3}
     - target: {fileID: 7662574718355292838, guid: 048dcd7789c698a4698f665f849c6a50, type: 3}
       propertyPath: cushionOffset
       value: 0.4
@@ -3209,11 +3221,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2124433477841958943, guid: b5311582c09359a4981f72640f1fb558, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000014248036
+      value: 0.000000014248048
       objectReference: {fileID: 0}
     - target: {fileID: 2124433477841958943, guid: b5311582c09359a4981f72640f1fb558, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000009646391
+      value: -0.000000009646399
       objectReference: {fileID: 0}
     - target: {fileID: 2124433477841958943, guid: b5311582c09359a4981f72640f1fb558, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3463,7 +3475,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.005
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3589,11 +3601,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2121574907304386686, guid: c172e2af3de2dc54289ffbd0fad2552c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000014248036
+      value: 0.000000014248048
       objectReference: {fileID: 0}
     - target: {fileID: 2121574907304386686, guid: c172e2af3de2dc54289ffbd0fad2552c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000009646391
+      value: -0.000000009646399
       objectReference: {fileID: 0}
     - target: {fileID: 2121574907304386686, guid: c172e2af3de2dc54289ffbd0fad2552c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
