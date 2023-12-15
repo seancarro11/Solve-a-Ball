@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
                 faceDirection = Vector3.forward;
                 gameObject.transform.GetChild(0).transform.localPosition = cushionOffset * faceDirection;
                 gameObject.transform.GetChild(1).transform.localPosition = cushionOffset * faceDirection;
+                gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(90, 90, 0);
+                gameObject.transform.GetChild(2).transform.rotation = Quaternion.Euler(0, 0, 0);
                 StartCoroutine(Delay());
             }
         }
@@ -96,6 +98,8 @@ public class PlayerController : MonoBehaviour
                 faceDirection = Vector3.back;
                 gameObject.transform.GetChild(0).transform.localPosition = cushionOffset * faceDirection;
                 gameObject.transform.GetChild(1).transform.localPosition = cushionOffset * faceDirection;
+                gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(90, 90, 0);
+                gameObject.transform.GetChild(2).transform.rotation = Quaternion.Euler(0, 180, 0);
                 StartCoroutine(Delay());
             }
         }
@@ -130,6 +134,8 @@ public class PlayerController : MonoBehaviour
                 faceDirection = Vector3.left;
                 gameObject.transform.GetChild(0).transform.localPosition = cushionOffset * faceDirection;
                 gameObject.transform.GetChild(1).transform.localPosition = cushionOffset * faceDirection;
+                gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(90, 0, 0);
+                gameObject.transform.GetChild(2).transform.rotation = Quaternion.Euler(0, 270, 0);
                 StartCoroutine(Delay());
             }
         }
@@ -165,6 +171,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Delay());
                 gameObject.transform.GetChild(0).transform.localPosition = cushionOffset * faceDirection;
                 gameObject.transform.GetChild(1).transform.localPosition = cushionOffset * faceDirection;
+                gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(90, 0, 0);
+                gameObject.transform.GetChild(2).transform.rotation = Quaternion.Euler(0, 90, 0);
             }
 
         }
@@ -327,11 +335,11 @@ public class PlayerController : MonoBehaviour
                                     StartCoroutine(Delay());
                                     break;
                                 case "Table":
-                                    nextTag = gMid.getLocation(((int)transform.position.x / 2) + (int)faceDirection.x, ((int)transform.position.z / 2));
+                                    nextTag = gMid.getLocation(((int)transform.position.x / 2), ((int)transform.position.z / 2) + (int)faceDirection.z);
                                     if (nextTag == "Air")
                                     {
                                         audioSource.PlayOneShot(PickupPlank);
-                                        gMid.addPlank((((int)transform.position.x / 2) + (int)faceDirection.x), ((int)transform.position.z / 2));
+                                        gMid.addPlank((((int)transform.position.x / 2)), ((int)transform.position.z / 2) + (int)faceDirection.z);
                                         hasPlank = false;
                                         gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().enabled = false;
                                         StartCoroutine(Delay());
@@ -422,7 +430,7 @@ public class PlayerController : MonoBehaviour
                 {
                     audioSource.PlayOneShot(TurnPlank);
                     cushion = gFloor.getObject(((int)transform.position.x / 2) + (int)faceDirection.x, (int)transform.position.z / 2);
-                    cushion.GetComponent<PlankController>().setCurDirection();
+                  cushion.GetComponent<PlankController>().setCurDirection();
                     StartCoroutine(Delay());
                 }
                 else if (nextTag == "Table")

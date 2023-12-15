@@ -33,7 +33,7 @@ public class TileInfo : MonoBehaviour
             else if (Physics.Raycast(new Vector3(transform.position.x, point.y, transform.position.z), Vector3.up, out hitInfo, 0.5f) && hitInfo.collider.CompareTag("Cusion"))
             {
                 // Do something when a trigger collider with the specified tag is detected at the specified point
-                Debug.Log($"Trigger collider with tag 'Cusion' detected at point {point}!");
+                Debug.Log($"Trigger collider with tag 'Cusion' detected at point {point}!" + transform.position.x + " " + transform.position.z);
                 switch (index)
                 {
                     case 0: gameM.GetComponent<GridFloor>().addData(transform.position, "Cusion"); break;
@@ -44,7 +44,7 @@ public class TileInfo : MonoBehaviour
             else if (Physics.Raycast(new Vector3(transform.position.x, point.y, transform.position.z), Vector3.up, out hitInfo, 0.5f) && hitInfo.collider.CompareTag("Plank"))
             {
                 // Do something when a trigger collider with the specified tag is detected at the specified point
-                Debug.Log($"Trigger collider with tag 'Plank' detected at point {point}!");
+                Debug.Log($"Trigger collider with tag 'Plank' detected at point {point}!" + transform.position.x + " " + transform.position.z);
                 switch (index)
                 {
                     case 0: gameM.GetComponent<GridFloor>().addData(transform.position, "Plank"); break;
@@ -55,7 +55,7 @@ public class TileInfo : MonoBehaviour
             else if (Physics.Raycast(new Vector3(transform.position.x, point.y, transform.position.z), Vector3.up, out hitInfo, 0.5f) && hitInfo.collider.CompareTag("Door"))
             {
                 // Do something when a trigger collider with the specified tag is detected at the specified point
-                Debug.Log($"Trigger collider with tag 'Door' detected at point {point}!");
+                Debug.Log($"Trigger collider with tag 'Door' detected at point {point}!" + transform.position.x + " " + transform.position.z);
                 switch (index)
                 {
                     case 0: gameM.GetComponent<GridFloor>().addData(transform.position, "Door"); break;
@@ -66,7 +66,7 @@ public class TileInfo : MonoBehaviour
             else if (Physics.Raycast(new Vector3(transform.position.x, point.y, transform.position.z), Vector3.up, out hitInfo, 0.5f) && hitInfo.collider.CompareTag("Wall"))
             {
                 // Do something when a trigger collider with the specified tag is detected at the specified point
-                Debug.Log($"Trigger collider with tag 'Door' detected at point {point}!");
+                Debug.Log($"Trigger collider with tag 'Door' detected at point {point}!" + transform.position.x + " " + transform.position.z);
                 switch (index)
                 {
                     case 0: gameM.GetComponent<GridFloor>().addData(transform.position, "Wall"); break;

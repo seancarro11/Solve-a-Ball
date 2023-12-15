@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Tutorial 1 - Push Table.unity
+    guid: c13572bbe99b27a47b97b1d5562ea2cd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial 2 - Place Cushion.unity
+    guid: e0030096d30d1a94a9bb8f44fcb8115c
+  - enabled: 1
+    path: Assets/Scenes/Tutorial 3 - Rotate Plank.unity
+    guid: 3512a888d935dc046a0ee58e58831d5e
   m_configObjects: {}

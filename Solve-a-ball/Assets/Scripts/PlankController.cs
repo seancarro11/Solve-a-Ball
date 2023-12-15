@@ -4,82 +4,32 @@ using UnityEngine;
 
 public class PlankController : MonoBehaviour
 {
-    public bool left, right, back, forward;
+    public bool turned;
     private Vector3 curDirection;
     public float offset;
     private int index;
     private void Start()
     {
-        if (left)
+        if (turned)
         {
-            curDirection = Vector3.left;
-            index = 1;
-            transform.GetChild(0).localPosition = curDirection * offset;
-            transform.GetChild(0).transform.Rotate(Vector3.up, 90f);
-        }
-        if (right)
-        {
-            curDirection = Vector3.right;
-            index = 2;
-            transform.GetChild(0).localPosition = curDirection * offset;
-            transform.GetChild(0).transform.Rotate(Vector3.up, 90f);
-        }
-        if (back)
-        {
-            curDirection = Vector3.back;
-            index = 3;
-            transform.GetChild(0).localPosition = curDirection * offset;
-        }
-        if (forward)
-        {
-            curDirection = Vector3.forward;
-            index = 0;
-            transform.GetChild(0).localPosition = curDirection * offset;
+            transform.GetChild(0).transform.Rotate(0, 0, 90);
         }
 
     }
-    public Vector3 getCurDirection()
+    public bool getCurDirection()
     {
-        return curDirection;
+        return turned;
     }
     public void setCurDirection()
     {
-        switch (index) 
+        transform.GetChild(0).transform.Rotate(0, 0, 90);
+        if (turned) 
         {
-            case 0:
-                curDirection = Vector3.left;
-                index = 1;
-                left = true;
-                forward = false;
-
-                break;
-            case 1:
-                curDirection = Vector3.right;
-                index = 2;
-                right = true;
-                left = false;
-                break;
-            case 2:
-                curDirection = Vector3.back;
-                index = 3;
-                back = true;
-                right = false;
-                break;
-            case 3:
-                curDirection = Vector3.forward;
-                index = 0;
-                forward = true;
-                back = false;
-                break;
+            turned = false;
         }
-        transform.GetChild(0).localPosition=curDirection * offset;
-        if(Vector3.left== curDirection)
+        else
         {
-            transform.GetChild(0).transform.Rotate(Vector3.up, 90f);
-        }
-        if (Vector3.back == curDirection)
-        {
-            transform.GetChild(0).transform.Rotate(Vector3.up, 90f);
+            turned = true;
         }
     }
 

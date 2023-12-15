@@ -80,7 +80,9 @@ public class GridFloor : MonoBehaviour
         GameObject temp;
         //Debug.Log(""+i+j);
         // Debug.Log(objList[i, j]);
-            Physics.Raycast(new Vector3(i * 2, 0.0f, j * 2), Vector3.up, out hitInfo, 0.5f);
+          Physics.Raycast(new Vector3(i * 2, 0.0f, j * 2), Vector3.up, out hitInfo, 0.5f);
+        Debug.DrawLine(new Vector3(i * 2, 0.0f, j * 2), new Vector3(i * 2, 0.0f, j * 2) + Vector3.up * 20.0f, UnityEngine.Color.red, 30.0f);
+
         temp = hitInfo.transform.gameObject;
         return temp;
     }
